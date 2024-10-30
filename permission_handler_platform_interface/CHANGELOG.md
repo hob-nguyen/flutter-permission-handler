@@ -1,3 +1,7 @@
+## 4.2.3
+
+* Fixes class name references in the API documentation.
+
 ## 4.2.2
 
 * Adds limited access permission for Android 14+.

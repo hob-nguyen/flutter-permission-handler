@@ -11,7 +11,12 @@ import 'web_delegate.dart';
 
 /// Platform implementation of the permission_handler Flutter plugin.
 class WebPermissionHandler extends PermissionHandlerPlatform {
-  static final web.MediaDevices _devices = web.window.navigator.mediaDevices;
+  static final web.MediaDevices? _devices = (() {
+    if (!web.window.navigator.has('mediaDevices')) {
+      return null;
+    }
+    return web.window.navigator.mediaDevices;
+  })();
   static final web.Geolocation _geolocation = web.window.navigator.geolocation;
   static final web.Permissions? _htmlPermissions = (() {
     // Using unsafe interop to check availability of `permissions`.
